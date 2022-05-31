@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Reflection;
 using weatherApi.Data;
 using weatherApi.Data.Model;
 using weatherApi.Model;
@@ -183,6 +186,18 @@ namespace weatherApi.Controllers
 
         public string getConditionRu(string ConditionEng)
         {
+            string json = @"
+                {
+                    'clear': 'ясно',
+                    'partly-cloudy': 'малооблачно' 
+
+                }";
+
+
+            JObject rss = JObject.Parse(json);
+
+            var asd = rss["clear"].Value<string>();
+
             return System.Text.Encoding.UTF8.GetString(System.Text.Encoding.Default.GetBytes("ясно"));
 
             switch (ConditionEng)
@@ -233,7 +248,7 @@ namespace weatherApi.Controllers
 
     [ApiController]
     [Route("openweather")]
-    public class OpenWeatherController: ControllerBase
+    public class OpenWeatherController : ControllerBase
     {
         [HttpGet]
         public WeatherModel Get(double lat, double lon)

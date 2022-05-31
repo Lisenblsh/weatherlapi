@@ -26,3 +26,4 @@ D:\VSCode\csharp\weatherApi\weatherApi\obj\Debug\net6.0\ref\weatherApi.dll
 D:\VSCode\csharp\weatherApi\weatherApi\obj\Debug\net6.0\weatherApi.pdb
 D:\VSCode\csharp\weatherApi\weatherApi\obj\Debug\net6.0\weatherApi.genruntimeconfig.cache
 D:\VSCode\csharp\weatherApi\weatherApi\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\VSCode\csharp\weatherApi\weatherApi\bin\Debug\net6.0\Resorce\json.json
