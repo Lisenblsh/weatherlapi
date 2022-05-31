@@ -183,7 +183,7 @@ namespace weatherApi.Controllers
 
         public string getConditionRu(string ConditionEng)
         {
-            return System.Text.Encoding.UTF8.GetString(System.Text.Encoding.UTF8.GetBytes("ясно"));
+            return System.Text.Encoding.GetEncoding(1251).GetString(System.Text.Encoding.GetEncoding(1251).GetBytes("ясно"));
 
             switch (ConditionEng)
             {
