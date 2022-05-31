@@ -10,13 +10,13 @@ namespace weatherApi.Model
         [JsonProperty("message")]
         public string? Message { get; set; }
 
-        [JsonProperty("information")]
+        [JsonProperty("information", NullValueHandling = NullValueHandling.Ignore)]
         public InfoLocation? Information { get; set; }
 
-        [JsonProperty("fact")]
+        [JsonProperty("fact", NullValueHandling = NullValueHandling.Ignore)]
         public FactForecast? Fact { get; set; }
 
-        [JsonProperty("dailyForecast")]
+        [JsonProperty("dailyForecast", NullValueHandling = NullValueHandling.Ignore)]
         public List<DailyForecast>? DailyForecast { get; set; }
     }
 
@@ -29,28 +29,13 @@ namespace weatherApi.Model
         public int FeelsLike { get; set; }
 
         [JsonProperty("systemIconName")]
-        public string SystemIconName
-        {
-            get
-            {
-                return new CastFunction().getSystemIconName(ConditionEng);
-            }
-            set { }
-        }
+        public string SystemIconName { get; set; }
 
         [JsonProperty("conditionEng")]
         public string? ConditionEng { get; set; }
 
         [JsonProperty("conditionRu")]
-        public string ConditionRu
-        {
-            get
-            {
-                return new CastFunction().getConditionRu(ConditionEng);
-            }
-            set { }
-
-        }
+        public string ConditionRu { get; set; }
 
         [JsonProperty("cloudness")]
         public double Cloudness { get; set; }
@@ -69,6 +54,9 @@ namespace weatherApi.Model
 
         [JsonProperty("uvIndex")]
         public int? UvIndex { get; set; }
+
+        [JsonProperty("hours")]
+        public List<HoursForecast>? HoursForecast { get; set; }
     }
 
     public class InfoLocation
@@ -112,12 +100,17 @@ namespace weatherApi.Model
             set { }
         }
 
+        [JsonProperty("systemIconName")]
+        public string SystemIconName { get; set; }
+
+        [JsonProperty("conditionEng")]
+        public string? ConditionEng { get; set; }
+
+        [JsonProperty("conditionRu")]
+        public string ConditionRu { get; set; }
+
         [JsonProperty("parts")]
         public PartsForecast? PartsForecast { get; set; }
-
-        [JsonProperty("hours")]
-        public List<HoursForecast>? HoursForecast { get; set; }
-
     }
 
     public class PartsForecast
@@ -170,28 +163,13 @@ namespace weatherApi.Model
         public double Cloudness { get; set; }
 
         [JsonProperty("systemIconName")]
-        public string SystemIconName
-        {
-            get
-            {
-                return new CastFunction().getSystemIconName(ConditionEng);
-            }
-            set { }
-        }
+        public string SystemIconName { get; set; }
 
         [JsonProperty("conditionEng")]
         public string? ConditionEng { get; set; }
 
         [JsonProperty("conditionRu")]
-        public string ConditionRu
-        {
-            get
-            {
-                return new CastFunction().getConditionRu(ConditionEng);
-            }
-            set { }
-
-        }
+        public string ConditionRu { get; set; }
 
         [JsonProperty("uvIndex")]
         public int? UvIndex { get; set; }
@@ -213,28 +191,13 @@ namespace weatherApi.Model
         public int FeelsLikeTemp { get; set; }
 
         [JsonProperty("systemIconName")]
-        public string SystemIconName
-        {
-            get
-            {
-                return new CastFunction().getSystemIconName(ConditionEng);
-            }
-            set { }
-        }
+        public string SystemIconName { get; set; }
 
         [JsonProperty("conditionEng")]
         public string? ConditionEng { get; set; }
 
         [JsonProperty("conditionRu")]
-        public string ConditionRu
-        {
-            get
-            {
-                return new CastFunction().getConditionRu(ConditionEng);
-            }
-            set { }
-
-        }
+        public string ConditionRu { get; set; }
 
         [JsonProperty("cloudness")]
         public double Cloudness { get; set; }
@@ -260,101 +223,6 @@ namespace weatherApi.Model
     
     public class CastFunction
     {
-
-        public string getSystemIconName(string ConditionEng)
-        {
-            switch (ConditionEng)
-            {
-                case "clear":
-                    return "sun.max";
-                case "partly-cloudy":
-                    return "cloud.sun";
-                case "cloudy":
-                    return "cloud";
-                case "overcast":
-                    return "cloud";
-                case "drizzle":
-                    return "cloud.drizzle";
-                case "light-rain":
-                    return "cloud.drizzle";
-                case "rain":
-                    return "cloud.rain";
-                case "moderate-rain":
-                    return "cloud.rain";
-                case "heavy-rain":
-                    return "cloud.heavyrain";
-                case "continuous-heavy-rain":
-                    return "cloud.heavyrain";
-                case "showers":
-                    return "cloud.heavyrain";
-                case "wet-snow":
-                    return "cloud.sleet";
-                case "light-snow":
-                    return "cloud.snow";
-                case "snow":
-                    return "cloud.snow";
-                case "snow-showers":
-                    return "cloud.snow";
-                case "hail":
-                    return "cloud.hail";
-                case "thunderstorm":
-                    return "cloud.bolt";
-                case "thunderstorm-with-rain":
-                    return "cloud.bolt.rain";
-                case "thunderstorm-with-hail":
-                    return "cloud.bolt.rain";
-                default:
-                    return "photo";
-            }
-        }
-
-        public string getConditionRu(string ConditionEng)
-        {
-            switch (ConditionEng)
-            {
-                case "clear":
-                    return "ясно";
-                case "partly-cloudy":
-                    return "малооблачно";
-                case "cloudy":
-                    return "облачно с прояснениями";
-                case "overcast":
-                    return "пасмурно";
-                case "drizzle":
-                    return "морось";
-                case "light-rain":
-                    return "небольшой дождь";
-                case "rain":
-                    return "дождь";
-                case "moderate-rain":
-                    return "умеренно сильный дождь";
-                case "heavy-rain":
-                    return "сильный дождь";
-                case "continuous-heavy-rain":
-                    return "длительный сильный дождь";
-                case "showers":
-                    return "ливень";
-                case "wet-snow":
-                    return "дождь со снегом";
-                case "light-snow":
-                    return "небольшой снег";
-                case "snow":
-                    return "снег";
-                case "snow-showers":
-                    return "снегопад";
-                case "hail":
-                    return "град";
-                case "thunderstorm":
-                    return "гроза";
-                case "thunderstorm-with-rain":
-                    return "дождь с грозой";
-                case "thunderstorm-with-hail":
-                    return "гроза с градом";
-                default:
-                    return "";
-            }
-        }
-
         public string getMoonPhase(int moonCode)
         {
             switch (moonCode)
