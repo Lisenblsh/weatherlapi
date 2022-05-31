@@ -128,7 +128,7 @@ namespace weatherApi.Controllers
                 Humidity = forecast.Humidity,
                 Cloudness = forecast.Cloudness,
                 ConditionEng = forecast.Condition,
-                ConditionRu = getConditionRu(forecast.Condition)),
+                ConditionRu = getConditionRu(forecast.Condition),
                 SystemIconName = getSystemIconName(forecast.Condition),
                 UvIndex = forecast.UvIndex
             };
