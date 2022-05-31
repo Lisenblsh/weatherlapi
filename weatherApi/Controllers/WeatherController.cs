@@ -128,7 +128,7 @@ namespace weatherApi.Controllers
                 Humidity = forecast.Humidity,
                 Cloudness = forecast.Cloudness,
                 ConditionEng = forecast.Condition,
-                ConditionRu = System.Text.Encoding.UTF8.GetString(System.Text.Encoding.UTF8.GetBytes(getConditionRu(forecast.Condition))),
+                ConditionRu = getConditionRu(forecast.Condition)),
                 SystemIconName = getSystemIconName(forecast.Condition),
                 UvIndex = forecast.UvIndex
             };
@@ -183,6 +183,8 @@ namespace weatherApi.Controllers
 
         public string getConditionRu(string ConditionEng)
         {
+            return System.Text.Encoding.UTF8.GetString(System.Text.Encoding.UTF8.GetBytes("ясно"));
+
             switch (ConditionEng)
             {
                 case "clear":
