@@ -62,8 +62,8 @@ namespace weatherApi.Controllers
                 dailyForecast.Add(new DailyForecast(forecast.MoonCode)
                 {
                     DateTs = forecast.DateTs,
-                    Sunrise = forecast.Sunrise,
-                    Sunset = forecast.Sunset,
+                    Sunrise = DateTime.Parse(forecast.Sunrise).Second,
+                    Sunset = DateTime.Parse(forecast.Sunset).Second,
                     ConditionEng = forecast.Parts.DayShort.Condition,
                     ConditionRu = getConditionRu(forecast.Parts.DayShort.Condition),
                     SystemIconName = getSystemIconName(forecast.Parts.DayShort.Condition),
@@ -282,8 +282,8 @@ namespace weatherApi.Controllers
                 dailyForecast.Add(new DailyForecast(moonPhaseToCode(forecast.MoonPhase))
                 {
                     DateTs = forecast.Dt,
-                    Sunrise = TimeSpan.FromSeconds(forecast.Sunrise).ToString("hh':'mm"),
-                    Sunset = TimeSpan.FromSeconds(forecast.Sunset).ToString("hh':'mm"),
+                    Sunrise = forecast.Sunrise,
+                    Sunset = forecast.Sunset,
                     ConditionRu = forecast.Weather.First().Description,
                     SystemIconName = iconName(forecast.Weather.First().Icon),
                     PartsForecast = new PartsForecast

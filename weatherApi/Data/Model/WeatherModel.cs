@@ -10,7 +10,7 @@ namespace weatherApi.Model
         [JsonProperty("message")]
         public string? Message { get; set; }
 
-        [JsonProperty("information", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("information")]
         public InfoLocation? Information { get; set; }
 
         [JsonProperty("fact", NullValueHandling = NullValueHandling.Ignore)]
@@ -88,10 +88,10 @@ namespace weatherApi.Model
         public long DateTs { get; set; }
 
         [JsonProperty("sunrise")]
-        public string? Sunrise { get; set; }
+        public long Sunrise { get; set; }
 
         [JsonProperty("sunset")]
-        public string? Sunset { get; set; }
+        public long Sunset { get; set; }
 
         [JsonProperty("moonPhase")]
         public string MoonPhase

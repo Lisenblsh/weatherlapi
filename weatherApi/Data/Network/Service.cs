@@ -10,7 +10,7 @@ namespace weatherApi.Data.Network
             YandexWeatherModel yandexWeatherModels = new YandexWeatherModel() ;
 
             var url = $"https://api.weather.yandex.ru/v2/forecast";
-            var parametrs = $"?lat={3.12}&lon={lon.ToString().Replace(',', '.')}&extra=true&lang=ru_RU";
+            var parametrs = $"?lat={lat.ToString().Replace(',','.')}&lon={lon.ToString().Replace(',', '.')}&extra=true&lang=ru_RU";
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(url);
