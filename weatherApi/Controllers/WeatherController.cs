@@ -262,7 +262,7 @@ namespace weatherApi.Controllers
             {
                 Temp = (int)openWeather.Current.Temp,
                 FeelsLike = (int)openWeather.Current.FeelsLike,
-                ConditionRu = openWeather.Current.Weather.First().Description,
+                Condition = openWeather.Current.Weather.First().Id,
                 SystemIconName = iconName(openWeather.Current.Weather.First().Icon),
                 Cloudness = openWeather.Current.Clouds,
                 WindSpeed = openWeather.Current.WindSpeed,
@@ -283,7 +283,7 @@ namespace weatherApi.Controllers
                     DateTs = forecast.Dt,
                     Sunrise = forecast.Sunrise,
                     Sunset = forecast.Sunset,
-                    ConditionRu = forecast.Weather.First().Description,
+                    Condition = forecast.Weather.First().Id,
                     SystemIconName = iconName(forecast.Weather.First().Icon),
                     PartsForecast = new PartsForecast
                     {

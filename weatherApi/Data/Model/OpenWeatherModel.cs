@@ -94,7 +94,7 @@
     public partial class Weather
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("main")]
         public string Main { get; set; }
