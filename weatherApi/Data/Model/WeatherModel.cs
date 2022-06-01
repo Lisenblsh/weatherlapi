@@ -31,11 +31,8 @@ namespace weatherApi.Model
         [JsonProperty("systemIconName")]
         public string SystemIconName { get; set; }
 
-        [JsonProperty("conditionEng")]
-        public string? ConditionEng { get; set; }
-
-        [JsonProperty("conditionRu")]
-        public string ConditionRu { get; set; }
+        [JsonProperty("condition")]
+        public int Condition { get; set; }
 
         [JsonProperty("cloudness")]
         public double Cloudness { get; set; }
@@ -103,11 +100,8 @@ namespace weatherApi.Model
         [JsonProperty("systemIconName")]
         public string SystemIconName { get; set; }
 
-        [JsonProperty("conditionEng")]
-        public string? ConditionEng { get; set; }
-
-        [JsonProperty("conditionRu")]
-        public string ConditionRu { get; set; }
+        [JsonProperty("condition")]
+        public int Condition { get; set; }
 
         [JsonProperty("parts")]
         public PartsForecast? PartsForecast { get; set; }
@@ -165,11 +159,8 @@ namespace weatherApi.Model
         [JsonProperty("systemIconName")]
         public string SystemIconName { get; set; }
 
-        [JsonProperty("conditionEng")]
-        public string? ConditionEng { get; set; }
-
-        [JsonProperty("conditionRu")]
-        public string ConditionRu { get; set; }
+        [JsonProperty("condition")]
+        public int Condition { get; set; }
 
         [JsonProperty("uvIndex")]
         public int? UvIndex { get; set; }
@@ -193,11 +184,8 @@ namespace weatherApi.Model
         [JsonProperty("systemIconName")]
         public string SystemIconName { get; set; }
 
-        [JsonProperty("conditionEng")]
-        public string? ConditionEng { get; set; }
-
-        [JsonProperty("conditionRu")]
-        public string ConditionRu { get; set; }
+        [JsonProperty("condition")]
+        public int Condition { get; set; }
 
         [JsonProperty("cloudness")]
         public double Cloudness { get; set; }

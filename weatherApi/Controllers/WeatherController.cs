@@ -130,8 +130,7 @@ namespace weatherApi.Controllers
                 PressureMm = forecast.PressureMm,
                 Humidity = forecast.Humidity,
                 Cloudness = forecast.Cloudness,
-                ConditionEng = forecast.Condition,
-                ConditionRu = getConditionRu(forecast.Condition),
+                Condition = getConditionRu(forecast.Condition),
                 SystemIconName = getSystemIconName(forecast.Condition),
                 UvIndex = forecast.UvIndex
             };
@@ -184,64 +183,50 @@ namespace weatherApi.Controllers
             }
         }
 
-        public string getConditionRu(string ConditionEng)
+        public int getConditionRu(string ConditionEng)
         {
-            string json = @"
-                {
-                    'clear': 'ясно',
-                    'partly-cloudy': 'малооблачно' 
-
-                }";
-
-
-            JObject rss = JObject.Parse(json);
-
-            var asd = rss["clear"].Value<string>();
-
-            return System.Text.Encoding.UTF8.GetString(System.Text.Encoding.Default.GetBytes("ясно"));
-
             switch (ConditionEng)
             {
                 case "clear":
-                    return "ясно";
+                    return 800;
                 case "partly-cloudy":
-                    return "малооблачно";
+                    return 801;
                 case "cloudy":
-                    return "облачно с прояснениями";
+                    return 802;
                 case "overcast":
-                    return "пасмурно";
+                    return 804;
                 case "drizzle":
-                    return "морось";
+                    return 301;
                 case "light-rain":
-                    return "небольшой дождь";
+                    return 500;
                 case "rain":
-                    return "дождь";
+                    return 499;
                 case "moderate-rain":
-                    return "умеренно сильный дождь";
+                    return 501;
                 case "heavy-rain":
-                    return "сильный дождь";
+                    return 503;
                 case "continuous-heavy-rain":
-                    return "длительный сильный дождь";
+                    return 505;
                 case "showers":
-                    return "ливень";
+                    return 521;
                 case "wet-snow":
-                    return "дождь со снегом";
+                    return 613;
                 case "light-snow":
-                    return "небольшой снег";
+                    return 600;
                 case "snow":
-                    return "снег";
+                    return 601;
                 case "snow-showers":
-                    return "снегопад";
+                    return 621;
                 case "hail":
-                    return "град";
+                    return 623;
                 case "thunderstorm":
-                    return "гроза";
+                    return 211;
                 case "thunderstorm-with-rain":
-                    return "дождь с грозой";
+                    return 201;
                 case "thunderstorm-with-hail":
-                    return "гроза с градом";
+                    return 203;
                 default:
-                    return "";
+                    return 800;
             }
         }
     }
@@ -413,7 +398,7 @@ namespace weatherApi.Controllers
                     PressureMm = hour.Pressure,
                     Humidity = hour.Humidity,
                     UvIndex = (int)hour.Uvi,
-                    ConditionRu = hour.Weather.First().Description,
+                    Condition = hour.Weather.First().Id,
                     SystemIconName = iconName(hour.Weather.First().Icon)
                 };
                 listHours.Add(hourForecast);
