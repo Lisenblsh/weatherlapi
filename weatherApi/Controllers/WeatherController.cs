@@ -45,8 +45,7 @@ namespace weatherApi.Controllers
             {
                 Temp = yandexWeather.Fact.Temp,
                 FeelsLike = yandexWeather.Fact.FeelsLike,
-                ConditionEng = yandexWeather.Fact.Condition,
-                ConditionRu = getConditionRu(yandexWeather.Fact.Condition),
+                Condition = getConditionRu(yandexWeather.Fact.Condition),
                 SystemIconName = getSystemIconName(yandexWeather.Fact.Condition),
                 Cloudness = yandexWeather.Fact.Cloudness,
                 WindSpeed = yandexWeather.Fact.WindSpeed,
@@ -67,8 +66,7 @@ namespace weatherApi.Controllers
                     DateTs = forecast.DateTs,
                     Sunrise = DateTime.Parse(forecast.Sunrise).Second,
                     Sunset = DateTime.Parse(forecast.Sunset).Second,
-                    ConditionEng = forecast.Parts.DayShort.Condition,
-                    ConditionRu = getConditionRu(forecast.Parts.DayShort.Condition),
+                    Condition = getConditionRu(forecast.Parts.DayShort.Condition),
                     SystemIconName = getSystemIconName(forecast.Parts.DayShort.Condition),
                     PartsForecast = new PartsForecast
                     {
@@ -99,8 +97,7 @@ namespace weatherApi.Controllers
                     HourTs = hour.HourTs,
                     Temp = hour.Temp,
                     FeelsLikeTemp = hour.FeelsLike,
-                    ConditionEng = hour.Condition,
-                    ConditionRu = getConditionRu(hour.Condition),
+                    Condition = getConditionRu(hour.Condition),
                     SystemIconName = getSystemIconName(hour.Condition),
                     Cloudness = hour.Cloudness,
                     WindSpeed = hour.WindSpeed,
